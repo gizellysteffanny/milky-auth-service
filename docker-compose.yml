@@ -1,0 +1,11 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: milky_auth_db_user
+      POSTGRES_PASSWORD: milky_auth_db_password
+      POSTGRES_DB: milky_auth_db
+    ports:
+      - '5432:5432'
