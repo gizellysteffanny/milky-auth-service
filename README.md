@@ -37,7 +37,7 @@ Certifique-se de ter as seguintes ferramentas instaladas antes de prosseguir:
 
 - `POST /register` - Registrar um novo usuário.
 - `POST /login` - Fazer login e obter um token de autenticação.
-- Outros endpoints para gerenciamento de tokens e operações de autenticação.
+- `GET /profile` - Buscar informações do usuário logado.
 
 ## 🔒 Segurança
 
