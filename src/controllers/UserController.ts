@@ -2,12 +2,18 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 
 import { userRepository } from '../repositories/userRepository';
-import { BadRequestError } from '../helpers/api-errors';
+import { BadRequestError, UnauthorizedError } from '../helpers/api-errors';
 import { User } from '../entities/User';
+import { groupsAllowedValidator } from '../validators/groups-allowed.validator';
 
 export class UserController {
   async create(request: Request, response: Response) {
     const { name, email, password, groupsAllowed } = request.body as User;
+
+    if (!groupsAllowedValidator(groupsAllowed)) {
+      const error = new UnauthorizedError('Invalid groups allowed');
+      return response.status(error.statusCode).json({ message: error.message });
+    }
     
     const userExists = await userRepository.exist({ where: { email } });
     if (userExists) {
