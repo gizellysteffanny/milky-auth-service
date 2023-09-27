@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres:
     image: postgres
-    container_name: postgres-container
+    container_name: container-postgres__milky_auth_service
     environment:
       POSTGRES_USER: milky_auth_db_user
       POSTGRES_PASSWORD: milky_auth_db_password
